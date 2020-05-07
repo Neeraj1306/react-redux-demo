@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import CardList from '../components/CardList';
 import './App.css'
 import Scroll from '../components/Scroll'
+import Header from '../components/Header'
 import ErrorBoundary from './ErrorBoundary'
 // import {robots} from '../components/robots';
 import SearchBox from '../components/SearchBox'
@@ -29,7 +30,6 @@ const mapDispatchtoProps = (dispatch) => {
 }
 
 class App extends Component {
-    
     // constructor(){
     //     super();
     //     this.state = {
@@ -38,6 +38,8 @@ class App extends Component {
     //     }
     // }
     componentDidMount(){
+        console.log('App.js')
+
         // console.log(this.props.store.getState())
         this.props.onRequestRobots();
     }
@@ -57,7 +59,7 @@ class App extends Component {
              (
                 <div className='tc'>
                     <ErrorBoundary>
-                        <h1 className='f1'>RoboFriends</h1>
+                        <Header />
                         <SearchBox search={onSearch} />
                         <Scroll>
                             <CardList robots={filteredRobots}/> 

@@ -9,15 +9,19 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 import { searchRobots,requestRobots } from './reducers';
+import './wdyr';
+ 
+import 'react-hot-loader';
+import {hot} from 'react-hot-loader/root';
 
 const logger = createLogger();
 const rootReducer = combineReducers({ searchRobots, requestRobots})
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger))
-
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
+const HotApp = hot(App);
 ReactDOM.render(
   <React.StrictMode>
     <Provider  store={store}>
-       <App />
+       <HotApp />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
